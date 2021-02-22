@@ -19,19 +19,19 @@ EMOTION_CLASS_MAP = {
 
 
 def get_emotion_words_dict():
-    
+
     emotion_words_dict = {}
 
     for emotion, match_terms in EMOTION_CLASS_MAP.items():
-        
+
         #filter out the emoji from the term
-        def _filter_emoji(match_term):
+        def _remove_emoji(match_term):
             return len(match_term) > 1 or match_term.lower() in string.ascii_lowercase
-        
-        #remove the hashtag from the term, replace it with empty
+
+        #remove the hashtags from the term, replace it with empty
         def _remove_hashtags(match_term):
             return match_term.replace("#", "")
-        
-        emotion_words_dict[emotion] = list(map(_remove_hashtags, filter(_filter_emoji, match_terms)))
+
+        emotion_words_dict[emotion] = list(map(_remove_hashtags, filter(_remove_emoji, match_terms)))
 
     return emotion_words_dict
