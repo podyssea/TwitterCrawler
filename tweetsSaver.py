@@ -2,7 +2,7 @@
 """
 Created on Mon Feb 22 15:38:02 2021
 
-@author: odyss
+@author: odysseas polycarpou
 """
 
 from dateutil.parser import parse as date_parse
