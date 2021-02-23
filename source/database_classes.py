@@ -14,12 +14,11 @@ from mongoengine import connect, Document, StringField, DateTimeField
 def connect_to_mongo():
     load_dotenv()
     connect(
-        os.getenv("MONGO_INITDB_DATABASE"),
-        username=os.getenv("MONGO_INITDB_ROOT_USERNAME"),
-        password=os.getenv("MONGO_INITDB_ROOT_PASSWORD"),
+        os.getenv("web-science"),
+        username=os.getenv("web-science"),
+        password=os.getenv("web-science"),
         authentication_source='admin'
     )
-
 
 class Tweet(Document):
     id_str = StringField(unique=True)

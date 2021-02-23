@@ -22,3 +22,6 @@ for tweet in ProcessedTweet.objects(emotion_label="fear").limit(50):
 
 print(f"{Tweet.objects.count()} Tweets stored in DB")
 print(f"{ProcessedTweet.objects.count()} Processed Tweets stored in DB")
+
+
+#this code might be for testing purposes
