@@ -17,13 +17,13 @@ from nltk.tokenize import word_tokenize
 import nltk
 import numpy as np
 
-from web_science.database_classes import connect_to_mongo, Tweet, ProcessedTweet
-from web_science.emotions import get_emotion_pure_words
+from source.database_classes import connect_to_mongo, Tweet, ProcessedTweet
+from source.sentiments import get_emotion_words_dict
 
 RT_REGEX = re.compile("^(RT @.*: )")
 HANDLE_REGEX = re.compile("(@\w{1,15})\s")
 INCOMPLETE_WORD_REGEX = re.compile("^.* (\w+…) ")
-EMOTION_WORDS = get_emotion_pure_words()
+EMOTION_WORDS = get_emotion_words_dict()
 SIMILARITY_THRESHOLD = 0.20
 
 
