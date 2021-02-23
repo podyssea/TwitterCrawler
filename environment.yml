@@ -1,0 +1,15 @@
+name: source
+channels:
+  - conda-forge
+dependencies:
+  - python-dotenv
+  - pandas
+  - nltk
+  - numpy
+  - scikit-learn
+  - pip
+  - pip:
+    - TwitterAPI
+    - mongoengine
+    - gensim
+    - python-dateutil

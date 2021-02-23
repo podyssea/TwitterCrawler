@@ -17,7 +17,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 import numpy as np
 
-from web_science.database_models import connect_to_mongo, Tweet, ProcessedTweet
+from web_science.database_classes import connect_to_mongo, Tweet, ProcessedTweet
 from web_science.emotions import get_emotion_pure_words
 
 RT_REGEX = re.compile("^(RT @.*: )")
@@ -70,14 +70,14 @@ def relabel_word2vec(text, word2vec_model):
 
         for emotion_word in valid_emotion_words:
             tweet_word_scores = []
-            
+
             for tweet_word in tokenised_tweet:
                 similarity = word2vec_model.similarity(emotion_word, tweet_word)
                 tweet_word_scores.append(similarity)
 
             if len(tweet_word_scores) > 0:
                 word_scores.append(np.mean(tweet_word_scores))
-        
+
         emotion_scores[emotion] = np.max(word_scores) if len(word_scores) > 0 else 0
 
     new_emotion_label = max(emotion_scores.keys(), key=lambda k: emotion_scores[k])
