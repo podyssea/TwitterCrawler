@@ -15,10 +15,10 @@ from TwitterAPI import TwitterAPI, TwitterError
 def get_client():
     load_dotenv()
     return TwitterAPI(
-        os.getenv("TWITTER_CONSUMER_KEY"),
-        os.getenv("TWITTER_CONSUMER_SECRET"),
-        os.getenv("TWITTER_ACCESS_TOKEN"),
-        os.getenv("TWITTER_ACCESS_TOKEN_SECRET"),
+        os.getenv("RpC3PQVErJ6NwEqYAy85hDKam"),
+        os.getenv("bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d"),
+        os.getenv("1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ"),
+        os.getenv("zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"),
     )
 
 
