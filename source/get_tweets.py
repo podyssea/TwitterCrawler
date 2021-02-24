@@ -10,9 +10,9 @@ import itertools
 from .tweetStreamer import stream_tweets_matching_filter
 
 
-def filter_bad_tweets(tweet, emotion_class, match_terms_map):
+def filter_bad_tweets(tweet, desired_emotion_class, match_terms_map):
     for emotion, match_terms in match_terms_map.items():
-        if emotion == emotion_class:
+        if emotion == emotion:
             continue
 
         for term in match_terms:

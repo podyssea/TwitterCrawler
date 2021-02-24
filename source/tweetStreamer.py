@@ -7,6 +7,7 @@ Created on Mon Feb 22 15:26:33 2021
 
 import os
 import time
+import tweepy
 
 from dotenv import load_dotenv
 from TwitterAPI import TwitterAPI, TwitterError
@@ -14,12 +15,14 @@ from TwitterAPI import TwitterAPI, TwitterError
 
 def get_client():
     load_dotenv()
-    return TwitterAPI(
-        os.getenv("RpC3PQVErJ6NwEqYAy85hDKam"),
-        os.getenv("bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d"),
-        os.getenv("1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ"),
-        os.getenv("zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"),
+
+    api = TwitterAPI("RpC3PQVErJ6NwEqYAy85hDKam",
+                    "bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d",
+                    "1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ",
+                    "zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"
     )
+
+    return api
 
 
 def stream_tweets_matching_filter(query_expression, filter_function):

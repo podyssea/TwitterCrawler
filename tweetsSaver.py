@@ -7,6 +7,7 @@ Created on Mon Feb 22 15:38:02 2021
 
 from dateutil.parser import parse as date_parse
 from mongoengine import DoesNotExist, NotUniqueError
+import tweepy
 
 from source.get_tweets import get_clean_tweets
 from source.database_classes import connect_to_mongo, Tweet
