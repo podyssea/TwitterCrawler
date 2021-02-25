@@ -1,3 +1,9 @@
+from __future__ import print_function
+import codecs
+import json
+import re
+import sys
+
 # -*- coding: utf-8 -*-
 """
 Created on Mon Feb 22 15:42:56 2021
@@ -11,13 +17,6 @@ Created on Mon Feb 22 15:42:56 2021
 """
 Adapted from https://raw.githubusercontent.com/charman/mturk-emoji/master/encode_emoji.py
 """
-
-from __future__ import print_function
-import codecs
-import json
-import re
-import sys
-
 
 def replace_emoji_characters(s):
     """Replace 4-byte characters with HTML spans with bytes as JSON array

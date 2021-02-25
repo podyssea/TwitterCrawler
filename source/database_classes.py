@@ -7,7 +7,7 @@ Created on Mon Feb 22 15:31:45 2021
 
 import os
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from mongoengine import connect, Document, StringField, DateTimeField
 
 

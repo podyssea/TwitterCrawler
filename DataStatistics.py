@@ -53,7 +53,7 @@ if len(processed_tweets_df):
     })
     count_by_emotion_label.to_csv(join(RESULTS_DIR, "2b.csv"), header=False)
 
-sampled_ptdf = processed_tweets_df.groupby(["emotion_label"]).apply(pd.DataFrame.sample, n=15)
-sampled_ptdf["text"] = sampled_ptdf["raw_text"]
-sampled_ptdf["text"] = sampled_ptdf["text"].map(replace_emoji_characters)
-sampled_ptdf[["text"]].to_csv(join(DATA_DIR, "mturk.csv"))
+# sampled_ptdf = processed_tweets_df.groupby(["emotion_label"]).apply(pd.DataFrame.sample, n=15)
+# sampled_ptdf["text"] = sampled_ptdf["raw_text"]
+# sampled_ptdf["text"] = sampled_ptdf["text"].map(replace_emoji_characters)
+# sampled_ptdf[["text"]].to_csv(join(DATA_DIR, "mturk.csv"))
