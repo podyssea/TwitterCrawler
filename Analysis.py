@@ -26,6 +26,7 @@ SENTIMENT_TO_EMOTION = {
     "Pleasant": "pleasant",
     "Anger": "anger",
 }
+
 def map_name_to_emotion(emotion):
     return SENTIMENT_TO_EMOTION.get(emotion, emotion)
 
