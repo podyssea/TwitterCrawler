@@ -18,7 +18,7 @@ def filter_bad_tweets(tweet, desired_emotion_class, match_terms_map):
         for term in match_terms:
             if term in tweet.text:
                 return False
-
+                
     return True
 
 

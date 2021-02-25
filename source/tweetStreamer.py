@@ -13,21 +13,28 @@ from dotenv import load_dotenv
 from TwitterAPI import TwitterAPI, TwitterError
 
 
-def get_client():
+#===============Set your KEYS and TOKENS here==================#
+CONSUMER_KEY = "RpC3PQVErJ6NwEqYAy85hDKam"
+CONSUMER_KEY_SECRET = "bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d"
+ACCESS_TOKEN = "1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ"
+ACCESS_TOKEN_SECRET = "zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"
+#==============================================================#
+
+def connect_to_client():
     load_dotenv()
 
-    api = TwitterAPI("RpC3PQVErJ6NwEqYAy85hDKam",
-                    "bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d",
-                    "1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ",
-                    "zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"
-    )
-
-    return api
+    client = TwitterAPI(CONSUMER_KEY,
+                    CONSUMER_KEY_SECRET,
+                    ACCESS_TOKEN,
+                    ACCESS_TOKEN_SECRET)
+    return client
 
 
 def stream_tweets_matching_filter(query_expression, filter_function):
-    api = get_client()
+    api = connect_to_client()
 
+
+    #Make iterations fault fault tolerant 
     def _fault_tolerant_response_iter():
         query_params = {
             'track': query_expression,
@@ -44,14 +51,13 @@ def stream_tweets_matching_filter(query_expression, filter_function):
                         else:
                             break
                     yield item
-            except TwitterError.TwitterRequestError as e:
-                if e.status_code < 420:
+            except TwitterError.TwitterRequestError as exception:
+                if exception.status_code < 420:
                     raise
-                elif e.status_code in (420, 429):
+                elif exception.status_code in (420, 429):
                     print(f"Being rate-limited (Status code: {e.status_code})... backing off...")
                     time.sleep(5)
                 else:
-                    # re-try
                     continue
             except TwitterError.TwitterConnectionError:
                 # temporary interruption, re-try request
