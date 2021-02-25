@@ -95,11 +95,11 @@ def process_tweet(tweet_model, word2vec_model):
     processed_text = remove_twitter_handles(processed_text)
     processed_text = remove_ellipsis_incomplete_word(processed_text)
 
-    print(processed_text)
+    # print(processed_text)
 
     # relabel according to Word2Vec
     emotion_scores, new_emotion_label = relabel_word2vec(processed_text, word2vec_model)
-    pprint(emotion_scores)
+    # pprint(emotion_scores)
 
     if new_emotion_label != tweet_model.emotion_label:
         print(f"Tweet {tweet_model.id_str} changed from {tweet_model.emotion_label} to {new_emotion_label}\n{processed_text}")

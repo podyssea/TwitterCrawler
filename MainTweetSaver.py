@@ -9,7 +9,7 @@ from dateutil.parser import parse as date_parse
 from mongoengine import DoesNotExist, NotUniqueError
 import tweepy
 
-from .tweetStremer import get_clean_tweets
+from source.tweetStreamer import get_clean_tweets
 from source.database_classes import connect_to_mongo, Tweet
 from source.sentiments import EMOTION_CLASS_MAP
 
