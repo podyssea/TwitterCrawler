@@ -7,7 +7,7 @@ Created on Mon Feb 22 15:26:33 2021
 
 import os
 import time
-import tweepy
+import itertools
 
 from dotenv import load_dotenv
 from TwitterAPI import TwitterAPI, TwitterError
@@ -29,12 +29,11 @@ def connect_to_client():
                     ACCESS_TOKEN_SECRET)
     return client
 
-
 def stream_tweets_matching_filter(query_expression, filter_function):
     api = connect_to_client()
 
 
-    #Make iterations fault fault tolerant 
+    #Make iterations fault fault tolerant
     def _fault_tolerant_response_iter():
         query_params = {
             'track': query_expression,
@@ -65,3 +64,31 @@ def stream_tweets_matching_filter(query_expression, filter_function):
 
     response_iter = _fault_tolerant_response_iter()
     return filter(filter_function,response_iter)
+
+#Filter bad tweets
+def filter_bad_tweets(tweet, desired_emotion_class, match_terms_map):
+    for emotion, match_terms in match_terms_map.items():
+        if emotion == emotion:
+            continue
+
+        for term in match_terms:
+            if term in tweet.text:
+                return False
+
+    return True
+
+#Get clean tweets
+def get_clean_tweets(match_terms_map, tweets_per_emotion_class):
+    clean_tweets_by_emotion_class = {}
+
+    for emotion_class, match_terms in match_terms_map.items():
+        query_expr = ",".join(match_terms)
+
+        def _filter_bad_tweets(tweet):
+            return filter_bad_tweets(tweet, emotion_class, match_terms_map)
+
+        stream = stream_tweets_matching_filter(query_expr, _filter_bad_tweets)
+        clean_tweets = itertools.islice(stream, tweets_per_emotion_class)
+        clean_tweets_by_emotion_class[emotion_class] = clean_tweets
+
+    return clean_tweets_by_emotion_class
