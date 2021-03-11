@@ -26,7 +26,7 @@ def save_tweets():
 
     for emotion, tweets in tweets_by_emotion.items():
         for tweet in tweets:
-            print("Tweet ID - " + tweet.get("id_str"))
+            print("Fetched Tweet ID - " + tweet.get("id_str"))
             try:
                 tweet_model = Tweet.objects(id_str=tweet.get("id_str")).get()
             except DoesNotExist:

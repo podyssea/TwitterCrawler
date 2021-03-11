@@ -23,4 +23,3 @@ sampled_ptdf = tweets_df.groupby(["emotion_label"]).apply(lambda x: x.head(150))
 
 ok_ids = sampled_ptdf["id_str"].tolist()
 ProcessedTweet.objects(id_str__nin=ok_ids).delete()
-# Tweet.objects(id_str__nin=ok_ids).delete()
