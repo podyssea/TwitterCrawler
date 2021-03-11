@@ -126,9 +126,9 @@ def process_tweet(tweet_model, word2vec_model):
 
 
 def process_tweets():
-    print("Loading Word2Vec model...")
+    print("Initilizing Word2Vec model...")
     word2vec_model = api.load('word2vec-google-news-300')
-    print("Word2Vec model loaded.")
+    print("Word2Vec model done!")
 
     # for tweet in Tweet.objects(id_str__nin=[t.id_str for t in ProcessedTweet.objects.all()]):
     for tweet in Tweet.objects():
