@@ -42,7 +42,7 @@ def tweets_to_df(queryset):
 
 
 tweets_df = tweets_to_df(Tweet.objects.all())
-tweets_df.to_csv(join(DATA_DIR, "tweets-raw.csv"))
+tweets_df.to_csv(join(DATA_DIR, "tweets_saved.csv"))
 
 processed_tweets_df = tweets_to_df(ProcessedTweet.objects.all())
 if len(processed_tweets_df):
@@ -51,9 +51,4 @@ if len(processed_tweets_df):
         "id_str": "count",
         "created_at": ["min", "max"]
     })
-    count_by_emotion_label.to_csv(join(RESULTS_DIR, "2b.csv"), header=False)
-
-# sampled_ptdf = processed_tweets_df.groupby(["emotion_label"]).apply(pd.DataFrame.sample, n=15)
-# sampled_ptdf["text"] = sampled_ptdf["raw_text"]
-# sampled_ptdf["text"] = sampled_ptdf["text"].map(replace_emoji_characters)
-# sampled_ptdf[["text"]].to_csv(join(DATA_DIR, "mturk.csv"))
+    count_by_emotion_label.to_csv(join(RESULTS_DIR, "Database_Statistics.csv"), header=False)
