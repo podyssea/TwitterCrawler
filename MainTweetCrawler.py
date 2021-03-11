@@ -7,8 +7,6 @@ Created on Mon Feb 22 15:38:02 2021
 
 from dateutil.parser import parse as date_parse
 from mongoengine import DoesNotExist, NotUniqueError
-# import tweepy
-
 from source.tweetStreamer import get_clean_tweets
 from source.database_classes import connect_to_mongo, Tweet
 from source.sentiments import EMOTION_CLASS_MAP
@@ -17,6 +15,8 @@ from source.sentiments import EMOTION_CLASS_MAP
 NUM_CLEAN_TWEETS_PER_CLASS = 150
 
 
+#function to fetch and save tweets. This function fetches only clean tweets
+# and discards duplicates. Returns the tweet id on the console screen and a message if the tweet is duplicated
 def save_tweets():
     connect_to_mongo()
     tweets_by_emotion = get_clean_tweets(

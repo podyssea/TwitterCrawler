@@ -29,6 +29,7 @@ def connect_to_client():
                     ACCESS_TOKEN_SECRET)
     return client
 
+
 def stream_tweets_matching_filter(query_expression, filter_function):
     api = connect_to_client()
 

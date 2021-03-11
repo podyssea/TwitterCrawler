@@ -5,6 +5,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 
 from source.database_classes import connect_to_mongo, Tweet, ProcessedTweet
 
+#this python returns the classification report with the statistical analysis of the data fetched and processed from twitter
 connect_to_mongo()
 
 initial_df = pd.read_csv("data/tweets-raw.csv")
@@ -33,14 +34,6 @@ def map_name_to_emotion(emotion):
 merged["human_emotion_label"] = merged["emotion_label_y"].map(map_name_to_emotion)
 merged = merged[["emotion_label_x", "id_str", "human_emotion_label"]]
 merged.set_index("id_str", drop=True, inplace=True)
-
-# load processed tweets
-# queryset = ProcessedTweet.objects.all()
-# pt_df = pd.DataFrame(list(map(lambda x: json.loads(x.to_json()), queryset)))
-# pt_df = pt_df[["id_str", "emotion_label", "raw_text", "processed_text"]]
-# pt_df.set_index(["id_str"], inplace=True, drop=True)
-#
-# df = merged.merge(pt_df, how="inner", left_index=True, right_index=True)
 
 cl_report = classification_report(merged['human_emotion_label'].values, merged['emotion_label_x'].values, labels=merged['emotion_label_x'].unique().sort())
 with open("results/classification_analysis.txt", "w") as f:

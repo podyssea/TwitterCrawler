@@ -10,7 +10,7 @@ import os
 from dotenv import load_dotenv
 from mongoengine import connect, Document, StringField, DateTimeField
 
-
+#connect to mongo db as admin
 def connect_to_mongo():
     load_dotenv()
     connect(
@@ -20,6 +20,7 @@ def connect_to_mongo():
         authentication_source='admin'
     )
 
+#creates tweet class db
 class Tweet(Document):
     id_str = StringField(unique=True)
     emotion_label = StringField()
@@ -27,7 +28,7 @@ class Tweet(Document):
     created_at = DateTimeField()
     meta = {'allow_inheritance': True}
 
-
+#creates processed tweets in db
 class ProcessedTweet(Document):
     id_str = StringField(unique=True)
     created_at = DateTimeField()
