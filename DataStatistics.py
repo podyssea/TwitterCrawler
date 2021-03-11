@@ -46,7 +46,7 @@ tweets_df.to_csv(join(DATA_DIR, "tweets_saved.csv"))
 
 processed_tweets_df = tweets_to_df(ProcessedTweet.objects.all())
 if len(processed_tweets_df):
-    processed_tweets_df.to_csv(join(DATA_DIR, "tweets-processed.csv"))
+    processed_tweets_df.to_csv(join(DATA_DIR, "tweets_processed.csv"))
     count_by_emotion_label = processed_tweets_df[["id_str", "emotion_label", "created_at"]].groupby(['emotion_label']).agg({
         "id_str": "count",
         "created_at": ["min", "max"]

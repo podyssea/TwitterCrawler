@@ -8,11 +8,11 @@ from source.database_classes import connect_to_mongo, Tweet, ProcessedTweet
 #this python returns the classification report with the statistical analysis of the data fetched and processed from twitter
 connect_to_mongo()
 
-initial_df = pd.read_csv("data/tweets-raw.csv")
+initial_df = pd.read_csv("data/tweets_saved.csv")
 initial_df = initial_df[["emotion_label", "id_str"]]
 initial_df['id_str']=initial_df['id_str'].astype(str)
 
-results_df = pd.read_csv("data/tweets-processed.csv")
+results_df = pd.read_csv("data/tweets_processed.csv")
 results_df = results_df[["emotion_label", "id_str"]]
 results_df['id_str']=results_df['id_str'].astype(str)
 
