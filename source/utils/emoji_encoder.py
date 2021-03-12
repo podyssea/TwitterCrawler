@@ -11,9 +11,6 @@ Created on Mon Feb 22 15:42:56 2021
 @author: odyss
 """
 
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 """
 Adapted from https://raw.githubusercontent.com/charman/mturk-emoji/master/encode_emoji.py
 """

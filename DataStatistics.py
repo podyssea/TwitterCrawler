@@ -52,9 +52,3 @@ if len(processed_tweets_df):
         "created_at": ["min", "max"]
     })
     count_by_emotion_label.to_csv(join(RESULTS_DIR, "Database_Statistics.csv"), header=False)
-
-
-# sampled_ptdf = processed_tweets_df.groupby(["emotion_label"]).apply(pd.DataFrame.sample, n=15, replace=True)
-# sampled_ptdf["text"] = sampled_ptdf["raw_text"]
-# sampled_ptdf["text"] = sampled_ptdf["text"].map(replace_emoji_characters)
-# sampled_ptdf[["text"]].to_csv(join(DATA_DIR, "mturk.csv"))
