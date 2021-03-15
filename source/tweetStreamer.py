@@ -14,10 +14,10 @@ from TwitterAPI import TwitterAPI, TwitterError
 
 
 #===============Set your KEYS and TOKENS here==================#
-CONSUMER_KEY = "RpC3PQVErJ6NwEqYAy85hDKam"
-CONSUMER_KEY_SECRET = "bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d"
-ACCESS_TOKEN = "1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ"
-ACCESS_TOKEN_SECRET = "zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"
+CONSUMER_KEY = "" #"RpC3PQVErJ6NwEqYAy85hDKa"
+CONSUMER_KEY_SECRET = "" #"bIdIR94Q1QShZ6jAzbTWYNFryxmsz8YRCE3ZHhg0BVFPKkMI0d"
+ACCESS_TOKEN = "" #"1361687926686507013-1IuVkNJGyy3TOThnQEFjRNPGLxjaYJ"
+ACCESS_TOKEN_SECRET = "" #"zR7FXlT392WwoeJNh3hagl2xHpftVjQvmn1WilcwyPGCs"
 #==============================================================#
 
 def connect_to_client():
